@@ -14,7 +14,7 @@ const int LED_PIN_G = 6;
 
 QueueHandle_t xQueueButId;
 
-void led_1_task(void *p) {
+void led_r_task(void *p) {
     gpio_init(LED_PIN_R);
     gpio_set_dir(LED_PIN_R, GPIO_OUT);
 
@@ -64,7 +64,7 @@ int main() {
 
     xQueueButId = xQueueCreate(32, sizeof(int));
 
-    xTaskCreate(led_1_task, "LED_Task 1", 256, NULL, 1, NULL);
+    xTaskCreate(led_r_task, "LED_Task 1", 256, NULL, 1, NULL);
     xTaskCreate(btn_1_task, "BTN_Task 1", 256, NULL, 1, NULL);
 
     vTaskStartScheduler();
